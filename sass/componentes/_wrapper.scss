@@ -27,5 +27,12 @@
         display: grid;
         grid-template: repeat(30, 1fr) / repeat(30, 1fr);
         
+        &__food{
+            background-color: c.$text-color;
+        }
+
+        &__head{
+            background-color: c.$black;
+        }
     }
 }

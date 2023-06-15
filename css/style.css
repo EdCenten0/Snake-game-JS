@@ -39,5 +39,11 @@ body {
   display: grid;
   grid-template: repeat(30, 1fr)/repeat(30, 1fr);
 }
+.wrapper__play_board__food {
+  background-color: #A10035;
+}
+.wrapper__play_board__head {
+  background-color: #252525;
+}
 
 /*# sourceMappingURL=style.css.map */
