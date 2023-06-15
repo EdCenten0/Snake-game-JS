@@ -7,6 +7,7 @@ let snakeX = 5;
 let snakeY = 10;
 let velocityX = 0;
 let velocityY = 0;
+let snakeBody = [];
 
 
 const foodRandomizer =  () =>{
@@ -40,16 +41,26 @@ const initGame = () =>{
 
     if(snakeX == foodX && snakeY == foodY){
         foodRandomizer();
+        snakeBody.push(foodX,foodY);
     }
+
+    for(let i = snakeBody.length - 1; i > 0; i--){
+        snakeBody[i] = snakeBody[i - 1];
+    }
+
+    snakeBody[0] = [snakeX, snakeY];
 
     snakeX += velocityX;
     snakeY += velocityY;
 
+    for(let i = 0; i < snakeBody.length; i++){
+        htmlMarkup += ` <div class="wrapper__play_board__head" style="grid-area: ${snakeBody[i][1]} /  ${snakeBody[i][0]}"></div>`;
+    }
     
     play_board.innerHTML = htmlMarkup;
     play_board.innerHTML = htmlMarkups;
 }
 
 foodRandomizer();
-setInterval(initGame, 100);
+setInterval(initGame, 150);
 document.addEventListener("keydown", changeDirection)
