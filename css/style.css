@@ -1,11 +1,4 @@
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-}
-
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
   color: #A10035;
@@ -13,24 +6,56 @@ html {
 
 body {
   background-color: #2A0944;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.header {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+}
+.header__name {
+  margin: 0 auto;
+}
+.header__name p {
+  font-size: 5rem;
+  padding: 2rem;
+  font-family: "Bungee Spice", cursive;
+  text-shadow: 3px 3px 1px salmon;
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .header__name p {
+    font-size: 3rem;
+    text-align: center;
+  }
 }
 
 .wrapper {
   width: 65vmin;
   height: 70vmin;
   background-color: #3FA796;
-  margin: 5rem auto;
+  margin: 0 auto;
   border-radius: 5%;
   border: 10px solid #252525;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+@media (max-width: 480px) {
+  .wrapper {
+    width: 90vmin;
+    height: 95vmin;
+  }
+}
 .wrapper__game_details {
   font-size: 1.2rem;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+  font-weight: 800;
 }
 .wrapper__play_board {
   width: 100%;
@@ -44,6 +69,51 @@ body {
 }
 .wrapper__play_board__head {
   background-color: #252525;
+}
+
+.loose_banner {
+  width: 60vmin;
+  height: 40vmin;
+  background-color: #3FA796;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  inset: 0 0 0 0;
+  margin: auto;
+}
+.loose_banner__messages p {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.loose_banner__messages p:nth-child(1) {
+  font-weight: 800;
+  font-size: 2.2rem;
+  text-align: center;
+  border-bottom: 1px solid #252525;
+  padding: 0.5rem;
+  margin: 0;
+  text-shadow: 2px 1px 1px #252525;
+}
+.loose_banner__play_again {
+  display: flex;
+  justify-content: center;
+}
+.loose_banner__play_again button {
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #3FA796;
+  border: 1px solid #252525;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.loose_banner__play_again button:hover {
+  background-color: #c7c7c7;
+}
+.loose_banner__play_again button:active {
+  background-color: rgb(100, 100, 100);
 }
 
 /*# sourceMappingURL=style.css.map */
