@@ -8,6 +8,8 @@ let snakeY = 10;
 let velocityX = 0;
 let velocityY = 0;
 let snakeBody = [];
+let gameOver = false;
+let setIntervalId;
 
 
 const foodRandomizer =  () =>{
@@ -16,18 +18,24 @@ const foodRandomizer =  () =>{
     console.log(foodX, foodY)
 }
 
+const handleGameOver = () =>{
+    clearInterval(setIntervalId);
+    alert("Game Over");
+    location.reload();
+}
+
 const changeDirection= (e) => {
     // console.log(e)
-    if(e.key === "ArrowUp"){
+    if(e.key === "ArrowUp" && velocityY != 1){
         velocityX = 0;
         velocityY = -1;
-    }else if(e.key === "ArrowDown"){
+    }else if(e.key === "ArrowDown" && velocityY != -1){
         velocityX = 0;
         velocityY = 1;
-    }else if(e.key === "ArrowLeft"){
+    }else if(e.key === "ArrowLeft" && velocityX != 1){
         velocityX = -1;
         velocityY = 0;
-    }else if(e.key === "ArrowRight"){
+    }else if(e.key === "ArrowRight" && velocityX != -1){
         velocityX = 1;
         velocityY = 0;
     }
@@ -36,6 +44,8 @@ const changeDirection= (e) => {
 }
 
 const initGame = () =>{
+    if (gameOver) return handleGameOver();
+
     let htmlMarkup = ` <div class="wrapper__play_board__food" style="grid-area: ${foodY} /  ${foodX}"></div>`;
     htmlMarkup += ` <div class="wrapper__play_board__head" style="grid-area: ${snakeY} /  ${snakeX}"></div>`;
 
@@ -53,14 +63,20 @@ const initGame = () =>{
     snakeX += velocityX;
     snakeY += velocityY;
 
+    if(snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30){
+        gameOver = true;
+    }
+
     for(let i = 0; i < snakeBody.length; i++){
         htmlMarkup += ` <div class="wrapper__play_board__head" style="grid-area: ${snakeBody[i][1]} /  ${snakeBody[i][0]}"></div>`;
     }
+
+    
     
     play_board.innerHTML = htmlMarkup;
     play_board.innerHTML = htmlMarkups;
 }
 
 foodRandomizer();
-setInterval(initGame, 150);
+setIntervalId = setInterval(initGame, 150);
 document.addEventListener("keydown", changeDirection)
