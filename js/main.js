@@ -11,6 +11,8 @@ const wrapper__game_details__score = document.querySelector('.wrapper__game_deta
 const wrapper__game_details__highest_score = document.querySelector('.wrapper__game_details__highest_score p')
 
 
+
+
 //Vars
 let foodX;
 let foodY;
