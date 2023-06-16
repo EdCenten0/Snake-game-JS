@@ -1,14 +1,7 @@
 @use '../variables/colors' as c;
 
-html {
-    line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-  }
-  
 
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
     color: c.$text-color;
@@ -16,4 +9,7 @@ html {
 
 body{
     background-color: c.$first-color;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
