@@ -1,7 +1,19 @@
+//imports
+
+
+//HTML elements
+const loose_banner = document.querySelector('.loose_banner');
+const loose_banner__play_again__button = document.querySelector('.loose_banner__play_again button')
+const loose_banner__messages_score = document.querySelector('.loose_banner__messages p:nth-child(2)')
+const loose_banner__messages_highest_score = document.querySelector('.loose_banner__messages p:nth-child(3)')
 const play_board = document.querySelector('.wrapper__play_board');
 const wrapper__game_details__score = document.querySelector('.wrapper__game_details__score p');
 const wrapper__game_details__highest_score = document.querySelector('.wrapper__game_details__highest_score p')
 
+
+
+
+//Vars
 let foodX;
 let foodY;
 let snakeX = 5;
@@ -13,8 +25,8 @@ let gameOver = false;
 let setIntervalId;
 let score = 0;
 let highestScore = localStorage.getItem("wrapper__game_details__highest_score p") || 0;
-wrapper__game_details__highest_score.innerHTML = `Highest score: ${highestScore}`;
 
+//Functions
 const foodRandomizer =  () =>{
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
@@ -23,12 +35,25 @@ const foodRandomizer =  () =>{
 
 const handleGameOver = () =>{
     clearInterval(setIntervalId);
-    alert("Game Over");
-    location.reload();
+    loose_banner.classList.remove("inactive");
+    loose_banner.classList.add("scale");
+    setScore();
+    loose_banner__play_again__button.addEventListener('click',reloadGame);
+
+    
+}
+
+const reloadGame = () => {
+    location.reload()
+}
+
+const setScore = () =>{
+    loose_banner__messages_score.innerHTML = `Current score: ${score}`;
+    loose_banner__messages_highest_score.innerHTML = `Max score: ${highestScore}`;
 }
 
 const changeDirection= (e) => {
-    // console.log(e)
+    
     if(e.key === "ArrowUp" && velocityY != 1){
         velocityX = 0;
         velocityY = -1;
@@ -43,10 +68,11 @@ const changeDirection= (e) => {
         velocityY = 0;
     }
 
-    // initGame();
+    
 }
 
 const initGame = () =>{
+    wrapper__game_details__highest_score.innerHTML = `Highest score: ${highestScore}`; 
     if (gameOver) return handleGameOver();
 
     let htmlMarkup = ` <div class="wrapper__play_board__food" style="grid-area: ${foodY} /  ${foodX}"></div>`;
