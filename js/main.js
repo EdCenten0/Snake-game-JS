@@ -1,5 +1,6 @@
 const play_board = document.querySelector('.wrapper__play_board');
-
+const wrapper__game_details__score = document.querySelector('.wrapper__game_details__score p');
+const wrapper__game_details__highest_score = document.querySelector('.wrapper__game_details__highest_score p')
 
 let foodX;
 let foodY;
@@ -10,7 +11,9 @@ let velocityY = 0;
 let snakeBody = [];
 let gameOver = false;
 let setIntervalId;
-
+let score = 0;
+let highestScore = localStorage.getItem("wrapper__game_details__highest_score p") || 0;
+wrapper__game_details__highest_score.innerHTML = `Highest score: ${highestScore}`;
 
 const foodRandomizer =  () =>{
     foodX = Math.floor(Math.random() * 30) + 1;
@@ -52,6 +55,14 @@ const initGame = () =>{
     if(snakeX == foodX && snakeY == foodY){
         foodRandomizer();
         snakeBody.push(foodX,foodY);
+        score++;
+
+        highestScore = score >= highestScore ? score: highestScore;
+        localStorage.setItem("wrapper__game_details__highest_score p", highestScore);
+        wrapper__game_details__score.innerHTML = `Score: ${score}`;
+
+        wrapper__game_details__highest_score.innerHTML = `Highest score: ${highestScore}`;
+        
     }
 
     for(let i = snakeBody.length - 1; i > 0; i--){
