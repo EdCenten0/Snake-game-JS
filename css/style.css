@@ -21,7 +21,7 @@ body {
 }
 .header__name p {
   font-size: 5rem;
-  padding: 2rem;
+  padding: 0rem;
   font-family: "Bungee Spice", cursive;
   text-shadow: 3px 3px 1px salmon;
   margin: 0;
@@ -126,6 +126,91 @@ body {
 }
 .scale:hover {
   transform: scale(1.1);
+}
+
+.console {
+  width: 80vmin;
+  height: fit-content;
+  padding: 1rem 0;
+  background-color: #c7c7c7;
+  border: 6px solid #010101;
+  border-radius: 12px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.console__branch {
+  align-self: center;
+  margin-top: 1rem;
+}
+.console__branch p {
+  text-align: start;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+.console__controls {
+  width: 100%;
+  height: 10rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0 1rem;
+}
+.console__controls__up {
+  background-color: #252525;
+  grid-column: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.console__controls__up__shadow {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: rgb(100, 100, 100);
+}
+.console__controls__down {
+  background-color: #252525;
+  grid-column: 2/3;
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.console__controls__down__shadow {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: rgb(100, 100, 100);
+}
+.console__controls__left {
+  background-color: #252525;
+  grid-column: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.console__controls__left__shadow {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: rgb(100, 100, 100);
+}
+.console__controls__right {
+  background-color: #252525;
+  grid-column: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.console__controls__right__shadow {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background-color: rgb(100, 100, 100);
 }
 
 /*# sourceMappingURL=style.css.map */
