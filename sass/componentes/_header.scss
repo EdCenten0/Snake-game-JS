@@ -15,9 +15,16 @@
             text-shadow: 3px 3px 1px salmon;
             margin: 0;
 
+            @media (max-width: mq.$tablet){
+                font-size: 4rem;
+                text-align: center;
+                margin: 1rem 0;
+            }
+
             @media (max-width: mq.$mobile){
                 font-size: 3rem;
                 text-align: center;
+                margin: 2rem 0;
             }
         }
     }

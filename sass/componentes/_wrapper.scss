@@ -13,9 +13,16 @@
     flex-direction: column;
     overflow: hidden;
 
+    
+
+    @media (max-width: mq.$tablet){
+        width: 75vmin;
+        height: 80vmin;
+    }
+
     @media (max-width: mq.$mobile){
-        width: 90vmin;
-        height: 95vmin;
+        width: 85vmin;
+        height: 90vmin;
     }
         
 
