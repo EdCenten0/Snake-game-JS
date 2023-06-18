@@ -145,5 +145,5 @@ const initGame = () =>{
 
 
 foodRandomizer();
-setIntervalId = setInterval(initGame, 150);
+setIntervalId = setInterval(initGame, 100);
 document.addEventListener("keydown", changeDirection)
