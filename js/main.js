@@ -38,6 +38,7 @@ const handleGameOver = () =>{
     clearInterval(setIntervalId);
     loose_banner.classList.remove("inactive");
     loose_banner.classList.add("scale");
+    
     setScore();
     loose_banner__play_again__button.addEventListener('click',reloadGame);
 
@@ -54,21 +55,6 @@ const setScore = () =>{
 }
 
 const changeDirection= (e) => {
-    // if(!mobileWidth){
-    //     if(e === "ArrowUp" && velocityY != 1){
-    //         velocityX = 0;
-    //         velocityY = -1;
-    //     }else if(e === "ArrowDown" && velocityY != -1){
-    //         velocityX = 0;
-    //         velocityY = 1;
-    //     }else if(e === "ArrowLeft" && velocityX != 1){
-    //         velocityX = -1;
-    //         velocityY = 0;
-    //     }else if(e === "ArrowRight" && velocityX != -1){
-    //         velocityX = 1;
-    //         velocityY = 0;
-    //     }
-    // }else{
         if(e.key === "ArrowUp" && velocityY != 1){
             velocityX = 0;
             velocityY = -1;
@@ -82,7 +68,6 @@ const changeDirection= (e) => {
             velocityX = 1;
             velocityY = 0;
         }
-    // }
         
 }
 
@@ -93,12 +78,7 @@ mobile_controls.forEach(key => {
     });
   });
 
-const initGame = () =>{    
-    // if(mobileWidth){
-    //     mobile_controls.forEach(key =>{
-    //         key.addEventListener("click", changeDirection({key: key.dataset.key}))
-    //     })
-    // }
+const initGame = () =>{     
 
     wrapper__game_details__highest_score.innerHTML = `Highest score: ${highestScore}`; 
     if (gameOver) return handleGameOver();
