@@ -1,6 +1,7 @@
 //imports
 
 
+
 //HTML elements
 const loose_banner = document.querySelector('.loose_banner');
 const loose_banner__play_again__button = document.querySelector('.loose_banner__play_again button')
@@ -8,9 +9,9 @@ const loose_banner__messages_score = document.querySelector('.loose_banner__mess
 const loose_banner__messages_highest_score = document.querySelector('.loose_banner__messages p:nth-child(3)')
 const play_board = document.querySelector('.wrapper__play_board');
 const wrapper__game_details__score = document.querySelector('.wrapper__game_details__score p');
-const wrapper__game_details__highest_score = document.querySelector('.wrapper__game_details__highest_score p')
-
-
+const wrapper__game_details__highest_score = document.querySelector('.wrapper__game_details__highest_score p');
+const mobile_controls = document.querySelectorAll(".console__controls > div");
+let mobileWidth = window.innerWidth <= 768 ? true : false;
 
 
 //Vars
@@ -18,8 +19,8 @@ let foodX;
 let foodY;
 let snakeX = 5;
 let snakeY = 10;
-let velocityX = 0;
-let velocityY = 0;
+export let velocityX = 0;
+export let velocityY = 0;
 let snakeBody = [];
 let gameOver = false;
 let setIntervalId;
@@ -53,25 +54,52 @@ const setScore = () =>{
 }
 
 const changeDirection= (e) => {
-    
-    if(e.key === "ArrowUp" && velocityY != 1){
-        velocityX = 0;
-        velocityY = -1;
-    }else if(e.key === "ArrowDown" && velocityY != -1){
-        velocityX = 0;
-        velocityY = 1;
-    }else if(e.key === "ArrowLeft" && velocityX != 1){
-        velocityX = -1;
-        velocityY = 0;
-    }else if(e.key === "ArrowRight" && velocityX != -1){
-        velocityX = 1;
-        velocityY = 0;
-    }
-
-    
+    // if(!mobileWidth){
+    //     if(e === "ArrowUp" && velocityY != 1){
+    //         velocityX = 0;
+    //         velocityY = -1;
+    //     }else if(e === "ArrowDown" && velocityY != -1){
+    //         velocityX = 0;
+    //         velocityY = 1;
+    //     }else if(e === "ArrowLeft" && velocityX != 1){
+    //         velocityX = -1;
+    //         velocityY = 0;
+    //     }else if(e === "ArrowRight" && velocityX != -1){
+    //         velocityX = 1;
+    //         velocityY = 0;
+    //     }
+    // }else{
+        if(e.key === "ArrowUp" && velocityY != 1){
+            velocityX = 0;
+            velocityY = -1;
+        }else if(e.key === "ArrowDown" && velocityY != -1){
+            velocityX = 0;
+            velocityY = 1;
+        }else if(e.key === "ArrowLeft" && velocityX != 1){
+            velocityX = -1;
+            velocityY = 0;
+        }else if(e.key === "ArrowRight" && velocityX != -1){
+            velocityX = 1;
+            velocityY = 0;
+        }
+    // }
+        
 }
 
-const initGame = () =>{
+mobile_controls.forEach(key => {
+    key.addEventListener("click", () => {
+      const direction = key.getAttribute("data-key");
+      changeDirection({ key: direction });
+    });
+  });
+
+const initGame = () =>{    
+    // if(mobileWidth){
+    //     mobile_controls.forEach(key =>{
+    //         key.addEventListener("click", changeDirection({key: key.dataset.key}))
+    //     })
+    // }
+
     wrapper__game_details__highest_score.innerHTML = `Highest score: ${highestScore}`; 
     if (gameOver) return handleGameOver();
 
@@ -109,13 +137,12 @@ const initGame = () =>{
         if(i !== 0 && snakeBody[0][1] === snakeBody[i][1] && snakeBody [0][0] === snakeBody [i][0]){
             gameOver = true
         }
-    }
-
-    
-    
+    }    
     play_board.innerHTML = htmlMarkup;
-    play_board.innerHTML = htmlMarkups;
+    play_board.innerHTML = htmlMarkup;
 }
+
+
 
 foodRandomizer();
 setIntervalId = setInterval(initGame, 150);
